@@ -1,0 +1,122 @@
+/* 인사이드 크리에이터 — 인터뷰 신문 스타일 */
+
+:root {
+  --ink: #1a1a1a;
+  --gray: #6b6b6b;
+  --line: #d9d4c8;
+  --paper: #faf7f0;
+  --accent: #b3261e;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  background: var(--paper);
+  color: var(--ink);
+  font-family: "Noto Serif KR", "Apple SD Gothic Neo", "Malgun Gothic", serif;
+  line-height: 1.7;
+}
+
+a { color: inherit; }
+
+.paper { max-width: 1040px; margin: 0 auto; padding: 24px 20px 60px; }
+
+/* 제호 */
+.masthead { text-align: center; border-bottom: 4px double var(--ink); padding-bottom: 14px; }
+.masthead .dateline {
+  display: flex; justify-content: space-between;
+  font-size: 12px; color: var(--gray);
+  border-bottom: 1px solid var(--line); padding-bottom: 6px; margin-bottom: 14px;
+}
+.masthead h1 { font-size: 52px; letter-spacing: 14px; text-indent: 14px; font-weight: 900; }
+.masthead h1 a { text-decoration: none; }
+.masthead .slogan { font-size: 13px; color: var(--gray); margin-top: 4px; }
+
+.navbar {
+  display: flex; justify-content: center; gap: 34px;
+  border-bottom: 1px solid var(--ink);
+  padding: 10px 0; margin-bottom: 28px;
+  font-size: 15px; font-weight: 700;
+}
+.navbar a { text-decoration: none; }
+.navbar a:hover { color: var(--accent); }
+
+/* 1면 */
+.front { display: grid; grid-template-columns: 2fr 1fr; gap: 32px; }
+
+.kicker { color: var(--accent); font-size: 13px; font-weight: 700; letter-spacing: 2px; }
+
+.lead h2 { font-size: 32px; line-height: 1.35; margin: 6px 0 12px; }
+.lead h2 a { text-decoration: none; }
+.lead h2 a:hover { text-decoration: underline; }
+.lead .summary { font-size: 16px; color: #333; }
+.byline { font-size: 13px; color: var(--gray); margin-top: 10px; }
+
+.card-list {
+  border-top: 1px solid var(--ink); margin-top: 26px; padding-top: 22px;
+  display: grid; grid-template-columns: 1fr 1fr; gap: 24px;
+}
+.card { border-right: 1px solid var(--line); padding-right: 22px; }
+.card:nth-child(even) { border-right: none; padding-right: 0; }
+.card h3 { font-size: 19px; line-height: 1.4; margin: 4px 0 8px; }
+.card h3 a { text-decoration: none; }
+.card h3 a:hover { text-decoration: underline; }
+.card p { font-size: 14px; color: #444; }
+
+/* 사이드바 */
+.sidebar { border-left: 1px solid var(--ink); padding-left: 24px; }
+.sidebar h4 {
+  font-size: 15px; letter-spacing: 3px;
+  border-bottom: 2px solid var(--ink); padding-bottom: 6px; margin-bottom: 12px;
+}
+.sidebar ol { list-style: none; counter-reset: rank; }
+.sidebar ol li {
+  counter-increment: rank;
+  font-size: 14px; padding: 8px 0;
+  border-bottom: 1px dotted var(--line);
+}
+.sidebar ol li::before {
+  content: counter(rank);
+  font-weight: 900; color: var(--accent);
+  margin-right: 10px;
+}
+.sidebar ol a { text-decoration: none; }
+.sidebar ol a:hover { text-decoration: underline; }
+.house-ad {
+  margin-top: 28px; border: 1px solid var(--ink);
+  text-align: center; padding: 26px 14px; font-size: 14px;
+}
+.house-ad strong { display: block; font-size: 17px; margin-bottom: 6px; }
+
+/* 기사 본문 */
+.article { max-width: 720px; margin: 0 auto; }
+.article h2 { font-size: 30px; line-height: 1.35; margin: 8px 0 6px; }
+.article .subtitle { font-size: 17px; color: var(--gray); margin-bottom: 14px; }
+.article .byline {
+  border-top: 1px solid var(--ink); border-bottom: 1px solid var(--line);
+  padding: 8px 0; margin-bottom: 24px;
+}
+.article p { font-size: 16px; margin-bottom: 18px; }
+.article p.question { font-weight: 700; margin-top: 26px; }
+.article blockquote {
+  border-left: 3px solid var(--accent);
+  padding: 4px 16px; margin: 24px 0; color: #333;
+  font-size: 19px; font-style: italic;
+}
+.back-link { display: inline-block; margin-top: 30px; font-size: 14px; color: var(--accent); }
+
+/* 바닥글 */
+.footer {
+  border-top: 4px double var(--ink);
+  margin-top: 50px; padding-top: 14px;
+  text-align: center; font-size: 12px; color: var(--gray);
+}
+
+@media (max-width: 760px) {
+  .masthead h1 { font-size: 32px; letter-spacing: 7px; text-indent: 7px; }
+  .navbar { gap: 16px; flex-wrap: wrap; }
+  .front { grid-template-columns: 1fr; }
+  .sidebar { border-left: none; padding-left: 0; border-top: 1px solid var(--ink); padding-top: 18px; }
+  .card-list { grid-template-columns: 1fr; }
+  .card { border-right: none; padding-right: 0; }
+}
