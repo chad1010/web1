@@ -28,6 +28,13 @@ export default function ArticlePage() {
         {기사.기자} · {기사.날짜}
       </p>
 
+      {기사.샘플 && (
+        <p className="sample-notice">
+          ⓘ 이 기사는 사이트 구조 확인용 샘플(가상 인물)입니다. 실제 인터뷰로 교체될 예정입니다.
+        </p>
+      )}
+      {기사.편집자주 && <p className="editor-note">[편집자 주] {기사.편집자주}</p>}
+
       {기사.본문.slice(0, 절반).map((문단, i) => (
         <p key={i} className={문단.startsWith("Q.") ? "question" : ""}>
           {문단.replace(/^Q\.\s*/, "")}
