@@ -1,0 +1,70 @@
+# main에 푸시될 때마다 두 매체를 빌드해 GitHub Pages로 배포한다.
+# 배포 구조:
+#   /            → 랜딩(두 매체 관문)
+#   /insidecreator/  → 인사이드 크리에이터
+#   /moneypick/      → 머니픽 뉴스
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Build 인사이드 크리에이터
+        working-directory: insidecreator
+        run: |
+          npm ci
+          npm run build
+
+      - name: Build 머니픽 뉴스
+        working-directory: moneypick
+        run: |
+          npm ci
+          npm run build
+
+      - name: Assemble site
+        run: |
+          mkdir -p site
+          cp landing/index.html site/index.html
+          cp -r insidecreator/dist site/insidecreator
+          cp -r moneypick/dist site/moneypick
+
+      - name: Configure Pages
+        uses: actions/configure-pages@v5
+        with:
+          enablement: true
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: site
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

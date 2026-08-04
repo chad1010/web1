@@ -1,6 +1,11 @@
 # 인터넷 신문사 프로젝트
 
-1인 인터넷 신문사 2개를 만드는 프로젝트. 각 매체는 독립된 Vite + React 앱이라 나중에 따로 배포하거나 저장소를 분리하기 쉽다.
+1인 인터넷 신문사 2개를 만드는 프로젝트.
+
+**배포 주소** (main에 머지되면 GitHub Actions가 자동 배포):
+- 랜딩: https://chad1010.github.io/web1/
+- 인사이드 크리에이터: https://chad1010.github.io/web1/insidecreator/
+- 머니픽 뉴스: https://chad1010.github.io/web1/moneypick/ 각 매체는 독립된 Vite + React 앱이라 나중에 따로 배포하거나 저장소를 분리하기 쉽다.
 
 | 폴더 | 매체 | 컨셉 |
 |---|---|---|
