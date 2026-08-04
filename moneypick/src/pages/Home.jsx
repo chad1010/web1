@@ -12,6 +12,9 @@ export default function Home() {
           <Link to={`/pick/${대표기사.id}`}>{대표기사.제목}</Link>
         </h2>
         <p>{대표기사.요약}</p>
+        <Link className="cta" to={`/pick/${대표기사.id}`}>
+          기사 읽기 →
+        </Link>
       </section>
 
       <div className="grid">

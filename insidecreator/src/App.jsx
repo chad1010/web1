@@ -9,15 +9,13 @@ import About from "./pages/About.jsx";
 export default function App() {
   return (
     <HashRouter>
-      <div className="paper">
-        <Masthead />
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/article/:id" element={<ArticlePage />} />
-          <Route path="/about" element={<About />} />
-        </Routes>
-        <Footer />
-      </div>
+      <Masthead />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/article/:id" element={<ArticlePage />} />
+        <Route path="/about" element={<About />} />
+      </Routes>
+      <Footer />
     </HashRouter>
   );
 }

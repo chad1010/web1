@@ -30,7 +30,7 @@ export default function ArticlePage() {
 
       {기사.본문.slice(0, 절반).map((문단, i) => (
         <p key={i} className={문단.startsWith("Q.") ? "question" : ""}>
-          {문단}
+          {문단.replace(/^Q\.\s*/, "")}
         </p>
       ))}
 
@@ -38,7 +38,7 @@ export default function ArticlePage() {
 
       {기사.본문.slice(절반).map((문단, i) => (
         <p key={i} className={문단.startsWith("Q.") ? "question" : ""}>
-          {문단}
+          {문단.replace(/^Q\.\s*/, "")}
         </p>
       ))}
 

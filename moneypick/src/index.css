@@ -1,14 +1,15 @@
-/* 머니픽 뉴스 — 리뷰·커머스 매체 스타일 */
+/* 머니픽 뉴스 — 모던 커머스 미디어 스타일 (화이트 + 그린) */
 
 :root {
-  --ink: #17211b;
-  --gray: #5f6b64;
-  --line: #dde4df;
-  --bg: #f7faf8;
-  --brand: #0a7d4f;      /* 머니픽 그린 */
-  --brand-dark: #075e3b;
-  --notice-bg: #fff8e6;
-  --notice-line: #e6d9a8;
+  --ink: #191f28;         /* 토스 계열 잉크 컬러 */
+  --gray-600: #4e5968;
+  --gray-400: #8b95a1;
+  --gray-100: #f2f4f6;
+  --bg: #ffffff;
+  --green: #00b26b;
+  --green-dark: #009159;
+  --green-bg: #e8f9f1;
+  --radius: 20px;
 }
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -16,98 +17,119 @@
 body {
   background: var(--bg);
   color: var(--ink);
-  font-family: "Pretendard", "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
-  line-height: 1.7;
+  font-family: "Pretendard Variable", Pretendard, -apple-system, "Apple SD Gothic Neo", sans-serif;
+  line-height: 1.65;
+  letter-spacing: -0.01em;
 }
 
 a { color: inherit; }
 
-.wrap { max-width: 960px; margin: 0 auto; padding: 0 20px 60px; }
+.wrap { max-width: 980px; margin: 0 auto; padding: 0 24px 72px; }
 
-/* 헤더 */
-.header { border-bottom: 2px solid var(--brand); background: #fff; }
+/* ── 헤더 ─────────────────────────────── */
+.header {
+  position: sticky; top: 0; z-index: 10;
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--gray-100);
+}
 .header-inner {
-  max-width: 960px; margin: 0 auto; padding: 18px 20px;
-  display: flex; align-items: baseline; justify-content: space-between; flex-wrap: wrap; gap: 8px;
+  max-width: 980px; margin: 0 auto; padding: 0 24px;
+  height: 64px; display: flex; align-items: center; justify-content: space-between; gap: 12px;
 }
-.logo { font-size: 26px; font-weight: 900; text-decoration: none; }
-.logo .pick { color: var(--brand); }
-.header nav { display: flex; gap: 20px; font-size: 14px; font-weight: 600; }
-.header nav a { text-decoration: none; color: var(--gray); }
-.header nav a:hover { color: var(--brand); }
+.logo { font-size: 21px; font-weight: 900; letter-spacing: -0.03em; text-decoration: none; }
+.logo .pick { color: var(--green); }
+.header nav { display: flex; gap: 22px; font-size: 14px; font-weight: 600; }
+.header nav a { text-decoration: none; color: var(--gray-600); transition: color 0.15s; }
+.header nav a:hover { color: var(--green-dark); }
 
-/* 제휴 고지 배너 — 모든 페이지 상단에 고정 노출 */
+/* ── 제휴 고지 — 필수 노출, 은은하게 ───── */
 .disclosure {
-  background: var(--notice-bg); border: 1px solid var(--notice-line);
-  border-radius: 8px; font-size: 13px; color: #6b5d2a;
-  padding: 10px 14px; margin: 18px 0 26px;
+  font-size: 12px; color: var(--gray-400);
+  background: var(--gray-100); border-radius: 10px;
+  padding: 10px 14px; margin: 20px 0 32px;
 }
 
-/* 홈 */
-.hero { margin-bottom: 30px; }
+/* ── 홈 히어로 카드 ────────────────────── */
+.hero {
+  background: linear-gradient(135deg, var(--green-bg) 0%, #f0fbf0 60%, #eef7ff 100%);
+  border-radius: 28px; padding: 52px 48px; margin-bottom: 40px;
+}
 .badge {
-  display: inline-block; background: var(--brand); color: #fff;
-  font-size: 12px; font-weight: 700; border-radius: 4px;
-  padding: 2px 8px; margin-bottom: 8px;
+  display: inline-block; background: var(--green); color: #fff;
+  font-size: 13px; font-weight: 700; border-radius: 999px;
+  padding: 5px 14px; margin-bottom: 16px;
 }
-.hero h2 { font-size: 30px; line-height: 1.35; }
+.hero h2 { font-size: clamp(26px, 3.8vw, 40px); font-weight: 900; letter-spacing: -0.03em; line-height: 1.3; max-width: 720px; }
 .hero h2 a { text-decoration: none; }
-.hero h2 a:hover { color: var(--brand-dark); }
-.hero p { color: var(--gray); margin-top: 8px; }
+.hero h2 a:hover { color: var(--green-dark); }
+.hero p { color: var(--gray-600); margin-top: 14px; font-size: 16px; max-width: 640px; }
+.hero .cta {
+  display: inline-block; margin-top: 28px;
+  background: var(--ink); color: #fff; text-decoration: none;
+  font-size: 15px; font-weight: 700;
+  padding: 13px 26px; border-radius: 999px; transition: background 0.15s;
+}
+.hero .cta:hover { background: var(--green-dark); }
 
+/* ── 카드 그리드 ───────────────────────── */
 .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
 .pick-card {
-  background: #fff; border: 1px solid var(--line); border-radius: 12px;
-  padding: 22px;
+  background: #fff; border: 1px solid var(--gray-100); border-radius: var(--radius);
+  padding: 28px;
+  transition: transform 0.15s, box-shadow 0.15s;
 }
-.pick-card .category { font-size: 12px; font-weight: 700; color: var(--brand); }
-.pick-card h3 { font-size: 18px; line-height: 1.45; margin: 6px 0 8px; }
+.pick-card:hover { transform: translateY(-3px); box-shadow: 0 12px 28px rgba(25, 31, 40, 0.08); }
+.pick-card .category { font-size: 13px; font-weight: 700; color: var(--green-dark); }
+.pick-card h3 { font-size: 19px; font-weight: 800; letter-spacing: -0.02em; line-height: 1.4; margin: 8px 0 10px; }
 .pick-card h3 a { text-decoration: none; }
-.pick-card h3 a:hover { color: var(--brand-dark); }
-.pick-card p { font-size: 14px; color: var(--gray); }
-.pick-card .date { font-size: 12px; color: #9aa79f; margin-top: 10px; }
+.pick-card p { font-size: 14px; color: var(--gray-600); }
+.pick-card .date { font-size: 12px; color: var(--gray-400); margin-top: 14px; }
 
-/* 기사 본문 */
-.post { background: #fff; border: 1px solid var(--line); border-radius: 12px; padding: 34px; }
-.post h2 { font-size: 26px; line-height: 1.4; margin: 6px 0 4px; }
-.post .meta { font-size: 13px; color: #9aa79f; margin-bottom: 22px; }
-.post p { font-size: 16px; margin-bottom: 16px; }
+/* ── 기사 본문 ─────────────────────────── */
+.post { max-width: 720px; margin: 0 auto; }
+.post h2 { font-size: clamp(24px, 3.4vw, 34px); font-weight: 900; letter-spacing: -0.03em; line-height: 1.32; margin: 12px 0 8px; }
+.post .meta { font-size: 13px; color: var(--gray-400); margin-bottom: 30px; }
+.post p { font-size: 16px; margin-bottom: 18px; color: #333d4b; }
 
 /* 픽 박스(제휴링크 영역) */
 .pick-box {
-  border: 2px solid var(--brand); border-radius: 12px;
-  padding: 20px; margin: 26px 0 10px;
+  background: var(--green-bg); border-radius: var(--radius);
+  padding: 26px; margin: 34px 0 10px;
 }
-.pick-box h4 { color: var(--brand-dark); font-size: 15px; margin-bottom: 12px; }
+.pick-box h4 { color: var(--green-dark); font-size: 16px; font-weight: 800; margin-bottom: 14px; }
 .pick-box ul { list-style: none; }
 .pick-box li {
   display: flex; justify-content: space-between; align-items: center;
-  gap: 12px; padding: 10px 0; border-bottom: 1px dashed var(--line);
-  font-size: 15px;
+  gap: 12px; padding: 12px 0;
+  border-bottom: 1px solid rgba(0, 178, 107, 0.15);
+  font-size: 15px; font-weight: 500;
 }
 .pick-box li:last-child { border-bottom: none; }
 .buy-btn {
-  flex-shrink: 0; background: var(--brand); color: #fff;
+  flex-shrink: 0; background: var(--green); color: #fff;
   font-size: 13px; font-weight: 700; text-decoration: none;
-  border-radius: 6px; padding: 7px 14px;
+  border-radius: 999px; padding: 8px 16px; transition: background 0.15s;
 }
-.buy-btn:hover { background: var(--brand-dark); }
-.buy-btn.pending { background: #b9c4be; cursor: default; }
-.pick-note { font-size: 12px; color: #9aa79f; margin-bottom: 20px; }
+.buy-btn:hover { background: var(--green-dark); }
+.buy-btn.pending { background: #c8d2cd; cursor: default; }
+.pick-note { font-size: 12px; color: var(--gray-400); margin-bottom: 20px; }
 
-.back-link { display: inline-block; margin-top: 24px; font-size: 14px; color: var(--brand-dark); }
+.back-link { display: inline-block; margin-top: 26px; font-size: 14px; font-weight: 700; color: var(--green-dark); }
 
 /* 소개 페이지 소제목 */
-.post h3 { font-size: 18px; margin: 26px 0 8px; color: var(--brand-dark); }
+.post h3 { font-size: 19px; font-weight: 800; margin: 30px 0 10px; }
 
-/* 바닥글 */
+/* ── 바닥글 ────────────────────────────── */
 .footer {
-  margin-top: 46px; padding-top: 16px; border-top: 1px solid var(--line);
-  text-align: center; font-size: 12px; color: #9aa79f;
+  margin-top: 56px; padding-top: 24px; border-top: 1px solid var(--gray-100);
+  text-align: center; font-size: 13px; color: var(--gray-400);
 }
 
 @media (max-width: 700px) {
+  .header nav { gap: 12px; font-size: 13px; }
+  .header nav a:nth-child(n + 4) { display: none; } /* 좁은 화면에선 주요 메뉴만 */
   .grid { grid-template-columns: 1fr; }
-  .post { padding: 22px; }
-  .hero h2 { font-size: 23px; }
+  .hero { padding: 36px 28px; }
 }
