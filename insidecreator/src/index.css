@@ -1,0 +1,152 @@
+/* 인사이드 크리에이터 — 에디토리얼 매거진 스타일 (블랙 + 라임 포인트) */
+
+:root {
+  --black: #101010;
+  --black-soft: #1c1c1c;
+  --white: #ffffff;
+  --gray-100: #f5f5f3;
+  --gray-400: #a3a3a0;
+  --gray-600: #6d6d6a;
+  --lime: #d9ff3d;      /* 포인트 컬러 */
+  --serif: "Noto Serif KR", serif;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--white);
+  color: var(--black);
+  font-family: "Pretendard Variable", Pretendard, -apple-system, "Apple SD Gothic Neo", sans-serif;
+  line-height: 1.65;
+  letter-spacing: -0.01em;
+}
+
+a { color: inherit; }
+
+.container { max-width: 1080px; margin: 0 auto; padding: 0 24px; }
+
+/* ── 헤더 ─────────────────────────────── */
+.header {
+  position: sticky; top: 0; z-index: 10;
+  background: rgba(16, 16, 16, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  color: var(--white);
+}
+.header-inner {
+  max-width: 1080px; margin: 0 auto; padding: 0 24px;
+  height: 64px; display: flex; align-items: center; justify-content: space-between;
+}
+.logo { display: flex; align-items: baseline; gap: 8px; text-decoration: none; }
+.logo .mark { font-weight: 900; font-size: 19px; letter-spacing: -0.02em; }
+.logo .en { font-size: 11px; font-weight: 600; color: var(--lime); letter-spacing: 0.14em; }
+.gnb { display: flex; gap: 26px; font-size: 14px; font-weight: 600; }
+.gnb a { text-decoration: none; color: rgba(255, 255, 255, 0.72); transition: color 0.15s; }
+.gnb a:hover { color: var(--lime); }
+
+/* ── 히어로 (머리기사) ─────────────────── */
+.hero { background: var(--black); color: var(--white); padding: 84px 0 92px; }
+.hero .kicker {
+  display: inline-block; font-size: 13px; font-weight: 700;
+  color: var(--black); background: var(--lime);
+  padding: 4px 12px; border-radius: 999px; margin-bottom: 22px;
+}
+.hero h2 {
+  font-size: clamp(30px, 4.6vw, 52px);
+  line-height: 1.22; font-weight: 900; letter-spacing: -0.03em;
+  max-width: 820px;
+}
+.hero h2 a { text-decoration: none; }
+.hero h2 a:hover { color: var(--lime); }
+.hero .summary { max-width: 640px; margin-top: 20px; font-size: 17px; color: rgba(255, 255, 255, 0.66); }
+.hero .byline { margin-top: 26px; font-size: 13px; color: var(--gray-400); }
+.hero .read-more {
+  display: inline-block; margin-top: 34px;
+  font-size: 15px; font-weight: 700; text-decoration: none;
+  color: var(--black); background: var(--white);
+  padding: 12px 24px; border-radius: 999px;
+  transition: background 0.15s;
+}
+.hero .read-more:hover { background: var(--lime); }
+
+/* ── 인터뷰 리스트 ─────────────────────── */
+.list-section { padding: 72px 0 40px; }
+.section-title {
+  font-size: 13px; font-weight: 700; letter-spacing: 0.16em;
+  color: var(--gray-600); margin-bottom: 8px;
+}
+.list { border-top: 2px solid var(--black); }
+.row {
+  display: grid; grid-template-columns: 64px 1fr auto; gap: 28px;
+  align-items: baseline;
+  padding: 34px 0; border-bottom: 1px solid #e6e6e3;
+  text-decoration: none;
+}
+.row .num { font-family: var(--serif); font-size: 30px; font-weight: 900; color: var(--gray-400); }
+.row:hover .num { color: var(--black); }
+.row h3 { font-size: 22px; font-weight: 800; letter-spacing: -0.02em; line-height: 1.35; }
+.row:hover h3 { text-decoration: underline; text-underline-offset: 5px; }
+.row p { margin-top: 8px; font-size: 15px; color: var(--gray-600); max-width: 620px; }
+.row .tag { font-size: 13px; font-weight: 700; color: var(--gray-600); white-space: nowrap; }
+
+/* ── 인터뷰이 모집 배너 ────────────────── */
+.recruit {
+  margin: 48px 0 80px; padding: 44px 40px;
+  background: var(--gray-100); border-radius: 24px;
+  display: flex; justify-content: space-between; align-items: center; gap: 24px; flex-wrap: wrap;
+}
+.recruit strong { display: block; font-size: 21px; font-weight: 800; letter-spacing: -0.02em; }
+.recruit span { color: var(--gray-600); font-size: 15px; }
+.recruit a {
+  flex-shrink: 0; font-size: 15px; font-weight: 700; text-decoration: none;
+  background: var(--black); color: var(--white);
+  padding: 13px 26px; border-radius: 999px; transition: opacity 0.15s;
+}
+.recruit a:hover { opacity: 0.8; }
+
+/* ── 기사 본문 ─────────────────────────── */
+.article { max-width: 680px; margin: 0 auto; padding: 72px 24px 40px; }
+.article .kicker {
+  display: inline-block; font-size: 13px; font-weight: 700;
+  background: var(--black); color: var(--lime);
+  padding: 4px 12px; border-radius: 999px; margin-bottom: 18px;
+}
+.article h2 { font-size: clamp(26px, 3.6vw, 38px); font-weight: 900; letter-spacing: -0.03em; line-height: 1.28; }
+.article .subtitle { margin-top: 14px; font-size: 17px; color: var(--gray-600); }
+.article .byline {
+  margin: 26px 0 40px; padding: 14px 0;
+  border-top: 1px solid var(--black); border-bottom: 1px solid #e6e6e3;
+  font-size: 13px; color: var(--gray-600);
+}
+.article p { font-size: 17px; margin-bottom: 22px; color: #2a2a2a; }
+.article p.question { font-weight: 800; color: var(--black); margin-top: 36px; }
+.article p.question::before { content: "Q "; color: #8aa910; }
+.article blockquote {
+  font-family: var(--serif); font-size: 23px; font-weight: 600; line-height: 1.5;
+  letter-spacing: -0.01em; text-align: center;
+  margin: 48px 0; padding: 36px 28px;
+  background: var(--black); color: var(--white); border-radius: 20px;
+}
+.back-link {
+  display: inline-block; margin-top: 28px;
+  font-size: 14px; font-weight: 700; color: var(--black);
+}
+
+/* ── 바닥글 ────────────────────────────── */
+.footer {
+  background: var(--black); color: var(--gray-400);
+  margin-top: 60px; padding: 36px 24px;
+  text-align: center; font-size: 13px;
+}
+.footer .foot-logo { color: var(--white); font-weight: 900; margin-bottom: 8px; }
+
+@media (max-width: 720px) {
+  .gnb { gap: 14px; font-size: 13px; }
+  .gnb a:nth-child(n + 4) { display: none; } /* 좁은 화면에선 홈·섹션 일부만 */
+  .hero { padding: 56px 0 64px; }
+  .row { grid-template-columns: 1fr; gap: 6px; padding: 26px 0; }
+  .row .num { display: none; }
+  .recruit { padding: 32px 24px; }
+}
