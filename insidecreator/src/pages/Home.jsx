@@ -8,7 +8,7 @@ export default function Home() {
     <main>
       <section className="hero">
         <div className="container">
-          <span className="kicker">{머리기사.섹션} · 단독 인터뷰</span>
+          <span className="kicker">{머리기사.섹션} 인터뷰</span>
           <h2>
             <Link to={`/article/${머리기사.id}`}>{머리기사.제목.split(" — ")[0]}</Link>
           </h2>
@@ -33,7 +33,10 @@ export default function Home() {
                   <h3>{기사.제목.split(" — ")[0]}</h3>
                   <p>{기사.요약}</p>
                 </div>
-                <span className="tag">{기사.섹션}</span>
+                <span className="tag">
+                  {기사.섹션}
+                  {기사.샘플 ? " · 샘플" : ""}
+                </span>
               </Link>
             ))}
           </div>
